@@ -13,7 +13,7 @@ public class ThreadTest {
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					System.out.println("1213");
+					System.out.println("2321321");
 				}
 				
 			}
