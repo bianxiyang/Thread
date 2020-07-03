@@ -1,4 +1,4 @@
-package com.test;
+package com.thread;
 /**
  *
  *	实现runnable接口

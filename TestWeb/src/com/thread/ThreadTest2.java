@@ -1,4 +1,4 @@
-package com.test;
+package com.thread;
 /**
  *	继承Thread类，两种调用方式
  *
