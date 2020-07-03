@@ -24,5 +24,8 @@ public class ThreadTest2 extends Thread{
 		
 		//第二种启动ThreadTest2线程
 		new ThreadTest2().start();
+		
+
+		
 	}
 }
