@@ -1,12 +1,16 @@
 package com.test;
 /**
- *	继承Thread类，两种调用方式
+ *
+ *	实现runnable接口
  *
  */
-public class ThreadTest2 extends Thread{
+public class ThreadTest3 implements Runnable{
+
 	@Override
 	public void run() {
+		
 		for(int i=0;i<10;i++) {
+			
 			try {
 				Thread.sleep(500);
 			} catch (InterruptedException e) {
@@ -16,13 +20,14 @@ public class ThreadTest2 extends Thread{
 		}
 	}
 	
-	
-	
 	public static void main(String[] args) {
-		//第一种启动Thread的子类中重写的run();
-//		new ThreadTest2().run();
 		
-		//第二种启动ThreadTest2线程
-		new ThreadTest2().start();
+		new ThreadTest3().run();
+		
+		
+		
 	}
+	
+	
+	
 }
