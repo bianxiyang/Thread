@@ -62,8 +62,10 @@ new------->NEW状态------start()-------------->RUNNABLE状态------------------
 	
 	在多个线程同时操作同一个资源的时候，需要进行锁定 ，锁定的不是资源，是来判断锁的归属到底属于谁，当前的锁属于A ，A 可以进行操作
 	
-	锁的是一个对象的前两位，来判断是否锁定（00，01,10,11），可以new Object(),但是正常情况都会synchronized(this),来锁定当前对象					
-										
+	锁的是一个对象的前两位，来判断是否锁定（00，01,10,11），可以new Object(),但是正常情况都会synchronized(this),来锁定当前对象,如果是static类，锁定的是xxx.class
+	
+	synchronized(Object):对象不能使用String常量,Integer,Long等基础数据类型
+						
 	简单的锁机制详见com.thread.SynchronizedTest.java
 	
 	用户模拟账户详见com.thread.Account.java							
