@@ -26,13 +26,13 @@
 6.线程运行轨迹
 
 
-new------------->NEW状态------start()------->RUNNABLE状态------------->TEMINATED状态
+new------->NEW状态------start()-------------->RUNNABLE状态----------------------------------------->TEMINATED状态
 
-										<--线程被挂起
+							|			<--线程被挂起			|	
 							ready------线程被调度器选中执行------->Running
-										<--Thread.yield()
-										
-										
+							|			<--Thread.yield()		|
+							|								|
+							|								|
 							|								|
 							|Thread.sleep(time)				|
 							|wait(time)						|
@@ -71,6 +71,18 @@ new------------->NEW状态------start()------->RUNNABLE状态------------->TEMIN
 	synchronized是可重入锁，两个synchronized的方法，m1调m2,获得的是同一把锁，允许，详见com.thread.SynchronizedTest2							
 										
 	如果程序中出现异常，锁会被释放详见com.thread.SynchronizedException									
-										
+
+8.synchronized具体的底层的实现
+
+	早起的synchronized是非常重量级的，需要找操作系统要资源，效率非常的慢jdk1.5
+	后来的改造有一个锁升级的概念
+							
+	sync(object)	
+	markword,第一个获得锁的对象，不会记录锁的状态，只会记录一下线程的id(偏向锁)，而且不会有其他的线程来争夺锁的所有权
+	
+	如果有线程争用，升级为自旋锁，自动旋10次之后，如果锁还没被释放，升级为重量级锁（去操作系统申请资源加锁）
+				
+	执行时间（加锁代码）短，线程数量少用自旋锁(atomic,lock)；
+	执行时间（加锁代码）长，线程数量比较多用重量级锁(synchronized)；			
 										
 										
