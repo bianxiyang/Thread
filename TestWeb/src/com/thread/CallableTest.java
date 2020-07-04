@@ -45,10 +45,8 @@ public class CallableTest implements Callable<Integer> {
 			sum = integerFutureTask.get();
 			System.out.println("总计：" + sum);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
