@@ -21,6 +21,7 @@ public class SynchronizedTest implements Runnable{
 	
 	
 	
+	
 	public static void main(String[] args) {
 		
 		

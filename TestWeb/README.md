@@ -64,11 +64,13 @@ new------------->NEW状态------start()------->RUNNABLE状态------------->TEMIN
 	
 	锁的是一个对象的前两位，来判断是否锁定（00，01,10,11），可以new Object(),但是正常情况都会synchronized(this),来锁定当前对象					
 										
+	简单的锁机制详见com.thread.SynchronizedTest.java
+	
+	用户模拟账户详见com.thread.Account.java							
 										
+	synchronized是可重入锁，两个synchronized的方法，m1调m2,获得的是同一把锁，允许，详见com.thread.SynchronizedTest2							
 										
-										
-										
-										
+	如果程序中出现异常，锁会被释放详见com.thread.SynchronizedException									
 										
 										
 										
