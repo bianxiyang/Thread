@@ -1,7 +1,5 @@
 package com.thread;
 
-import java.io.ObjectInputStream.GetField;
-
 /**
  * 	懒汉式的单例模式，什么时候获取实例的时候，再new
  * @author Administrator
