@@ -113,14 +113,35 @@ new------->NEW状态------start()-------------->RUNNABLE状态------------------
 		如果发生指令重排序，则123步顺序会变更
 
 	volatile只能保证可见性，不能保证一致性详见实例com.thread.VolatileTest
+
+10.锁的优化机制synchronized
+
+	a.把锁的粒度变细：当某个方法前后都有处理逻辑，中间需要加锁，那么锁的位置要加在中间，而不是整个方法
+	b.当锁的争用十分频繁，有很多细小颗粒的锁，那么优化成一个整个的锁，争用就没有那么频繁，锁的粗化
+	
+11.CAS(无锁优化，自旋)compareAndSet
+
+	由于很多业务模块，需要频繁的加锁，所以java提供了一些类来加自旋锁，而不是重量级锁	
+	
+	java.util.concurrent.atomic.*
+	
+	原理
+	举例：AtomicInteger
+	
+	cas(V,Expected,NewValue)
 	
 	
+	v:目前的值
+	Expected:期望的值
+	NewValue：新值
 	
 	
-	
-	
-	
-	
+	目前是3 ，期望是3 ，新值是4 ，正常操作
+	目前是3 ，期望是4，就再试一次otherwise try again or fail
+		目前是4 ，期望是4，正常操作
+		
+	问题：如果在V和Expected比较的时候，其他线程进入修改怎么办？？
+	A：CAS是CPU原语上的支持，无法干预
 	
 	
 	
