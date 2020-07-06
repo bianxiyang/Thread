@@ -100,13 +100,19 @@ new------->NEW状态------start()-------------->RUNNABLE状态------------------
 		MESI:缓存一致性协议
 	
 	B：禁止指令重排序(CPU)
-	
-		
-	
-	
 		DCL单例
-		Double
-	
+		Double check lock
+			例子：com.thread.Singleton_LH2  单例模式中的双重检查锁，虽然不加volatile也不会影响执行结果，但是会有指令重排序的问题
+		
+		int a = 8会分成三步
+		
+		1.给a申请内存,并且赋默认值a=0;
+		2.给a赋值 a=8;
+		3.把a的栈中的实例指向a=8.
+		
+		如果发生指令重排序，则123步顺序会变更
+
+	volatile只能保证可见性，不能保证一致性详见实例com.thread.VolatileTest
 	
 	
 	
