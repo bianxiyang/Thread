@@ -17,7 +17,7 @@ public class Singleton_LH {
 	}
 	
 	
-	public static synchronized Singleton_LH getInstance() {
+	public static /* synchronized */ Singleton_LH getInstance() {
 		
 		if(instance==null) {
 			
