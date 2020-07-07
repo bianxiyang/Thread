@@ -165,6 +165,8 @@ new------->NEW状态------start()-------------->RUNNABLE状态------------------
 	
 	lock:详见com.thread.ReentrantLock2
 	
+	lock的优点：详见com.thread.ReentrantLock3；详见com.thread.ReentrantLock4
 	
+	公平锁：详见com.thread.ReentrantLock5
 						
 										
