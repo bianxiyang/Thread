@@ -37,7 +37,7 @@ public class ThreadMethod {
 			public void run() {
 				for(int j=0;j<10;j++) {
 					System.out.println("t222222");
-					if(j==4) {
+					if(j==5) {
 						try {
 							t1.join();
 						} catch (InterruptedException e) {
@@ -60,7 +60,7 @@ public class ThreadMethod {
 	public static void main(String[] args) {
 		
 		ThreadMethod m = new ThreadMethod();
-		m.t1.start();
+//		m.t1.start();
 		m.t2.start();
 	}
 	
