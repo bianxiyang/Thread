@@ -74,7 +74,7 @@ new------->NEW状态------start()-------------->RUNNABLE状态------------------
 										
 	如果程序中出现异常，锁会被释放详见com.thread.SynchronizedException									
 
-8.synchronized具体的底层的实现
+8.synchronized具体的底层的实现（悲观锁）
 
 	早起的synchronized是非常重量级的，需要找操作系统要资源，效率非常的慢jdk1.5
 	后来的改造有一个锁升级的概念
@@ -151,9 +151,19 @@ new------->NEW状态------start()-------------->RUNNABLE状态------------------
 	
 	ABA问题，如果是基础类型，无所谓
 	如果是引用类型，就会出问题
+
+13.高并发问题(1000个线程，每个线程10万次操作)详见com.thread.AtomicVsSyncVsLongAdder
 	
+	atomic(无锁操作)
+	synchronized（锁操作）
+	longAdder（线程数多的时候，有优势）：内部是一个分段锁的概念，类似于一个数组，比如四个数组，每个数组放250个线程，
+	各自合计，最后sum
 	
+14.基于CAS的新类型的锁
 	
+	synchronized：详见com.thread.ReentrantLock1
+	
+	lock:详见com.thread.ReentrantLock2
 	
 	
 						
