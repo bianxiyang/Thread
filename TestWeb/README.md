@@ -169,4 +169,17 @@ new------->NEW状态------start()-------------->RUNNABLE状态------------------
 	
 	公平锁：详见com.thread.ReentrantLock5
 						
+	ReentrantLock  VS  synchronized的对比
+	
+	总结
+	CAS   ---  sync
+	try lock
+	lockInterruptibly可以被打断
+	公平和非公平的切换	
+	
+	
+	countdownlatch:倒数的一个门栓，倒数计数，详见com.thread.CountDownLatchTest
+	
+		
+		
 										
