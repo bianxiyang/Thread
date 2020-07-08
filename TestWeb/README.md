@@ -178,7 +178,9 @@ new------->NEW状态------start()-------------->RUNNABLE状态------------------
 	公平和非公平的切换	
 	
 	
-	countdownlatch:倒数的一个门栓，倒数计数，详见com.thread.CountDownLatchTest
+	CountDownLatch:倒数的一个门栓，倒数计数，详见com.thread.CountDownLatchTest
+	CyclicBarrier:栅栏，分批的执行，详见com.thread.CyclicBarrierTest
+	Phaser:阶段性的执行
 	
 		
 		
