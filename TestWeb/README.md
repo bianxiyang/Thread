@@ -186,6 +186,6 @@ new------->NEW状态------start()-------------->RUNNABLE状态------------------
 	
 	Semaphore：限流，详见com.thread.SemaphoreTest，可以用在买票，限流，举例子(车道，收费站)
 	
-	
+	Exchanger：线程之间交换数据用，详见com.thread.ExchangerTest
 		
 										
