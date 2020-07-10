@@ -56,7 +56,6 @@ public class CyclicBarrierTest {
 		}
 		
 		
-		StringBuffer sb = new StringBuffer("dd");
 		
 		
 		
