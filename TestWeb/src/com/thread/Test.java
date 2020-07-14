@@ -1,9 +1,15 @@
 package com.thread;
 
+import redis.clients.jedis.Jedis;
+
 public class Test {
 	public static void main(String[] args) {
 		
-		System.out.println("test git!");
+		Jedis jedis = new Jedis("127.0.0.1",6379);
+		
+		
+		
+		System.out.println(jedis.ping());
 		
 		
 	}

@@ -76,7 +76,7 @@
 	常用的数据类型的操作命令：http://redisdoc.com/
 	
 	
-	（key）:
+	（key）:exists测试是否存在
 	
 	
 	
