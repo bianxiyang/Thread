@@ -82,7 +82,7 @@
 	expire key 秒数
 	ttl key 查看还有多少秒过期，-1表示永不过期，-2表示已经过期
 	type key 查看key是什么类型
-	
+	 
 	
 	（String）:
 	incr/decr/incrby/decrby  加减（数字）
