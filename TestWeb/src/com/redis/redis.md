@@ -62,7 +62,7 @@
 		是一个键值对集合，是一个String类型的field 和value的映射表，hash特别适合存储对象
 		类似于Map<String,Object>
 	List：列表
-		是最简单的字符串列表，按照插入顺序排序，可以添加一个元素到列表的头部，或者尾部，底层是一个链表（LinkedList）
+		是最简单的字符串列表，按照插入顺序排序，可以添加一个元素到列表的头部，或者尾部，底层是一个链表（LinkedList）  LPUSH mylist 2345      LRANGE mylist 0 -1
 	Set：集合
 		是String类型的无序集合，是通过HashTable实现
 	Zset(sorted set:有序集合)
@@ -76,11 +76,44 @@
 	常用的数据类型的操作命令：http://redisdoc.com/
 	
 	
-	（key）:exists测试是否存在
+	（key）:
+	exists测试是否存在
+	move：（剪切） movie k3 2（把k3移到三号库）
+	expire key 秒数
+	ttl key 查看还有多少秒过期，-1表示永不过期，-2表示已经过期
+	type key 查看key是什么类型
 	
 	
+	（String）:
+	incr/decr/incrby/decrby  加减（数字）
+	getrange:类似于between and
+	setrange:范围内覆盖
+	setex(set with expire)过期时间
+	setnx（set if not exist）如果不存在才覆盖
+	mset/mget批量操作，多个操作
+	msetnx:如果不存在，则set ,（如果存在+不存在，结果为都失败）
 	
-
+	
+	（list）
+	LPUSH:正序进，反着出
+	RPUSH:怎么进怎么出
+	LRANGE:LRANGE mylist 0 -1
+	lpop:栈顶的移除
+	rpop:栈底的移除
+	lindex:索引
+	llen:长度
+	lrem key 删N 个value
+	ltrim key 开始index 结束index :截取制定范围的值在赋值给key+
+	ropolpush :list1 6,5,4   list 0  执行后 list 1 6,5   list2 4,0
+	lset key index value :将指定索引的地方，覆盖某个值
+	linsert key befor/after 值1 值2
+	
+	总结：是一个字符串链表，left ,right都可以插入添加
+	键不存在，创建新的链表
+	键已存在，新增内容
+	值全移除，对应的键也消失
+	链表无论头和为效率都极高，中间操作，效率就低了	
+	
 
 6.持久化和复制，RDB/AOF
 

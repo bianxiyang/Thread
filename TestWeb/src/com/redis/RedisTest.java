@@ -7,7 +7,11 @@ public class RedisTest {
 		
 		Jedis jedis = new Jedis("127.0.0.1",6379);
 		
-		System.out.println(jedis.ping());
+		jedis.set("k2", "v2");
+		
+		
+		System.out.println(jedis.get("k2").length());
+		
 		
 	}
 }
