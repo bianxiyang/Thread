@@ -114,6 +114,36 @@
 	值全移除，对应的键也消失
 	链表无论头和为效率都极高，中间操作，效率就低了	
 	
+	
+	（Set不允许重复的，无序）
+	单值多个value
+	
+	sadd set01 1 1 2 2 3 3 (只会存进去三个)
+	smembers set01列出所有的值
+	sismember set01 1(查询当前元素是否在set里)
+	scard:获取集合里的元素个数
+	srem key value：移除某个值
+	srandmember key：随机出数
+	spop key :随机出栈
+	smove key1 key2 在key1里某个值，将key1的某个值赋给key2
+	数学集合类：sdiff差集
+			sinter交集
+			sunion并集
+	
+	
+	
+	(Hash)
+	KV模式不变，但V是一个键值对
+	
+	
+	
+	
+	
+	(Zset)
+	
+	
+	
+	
 
 6.持久化和复制，RDB/AOF
 
