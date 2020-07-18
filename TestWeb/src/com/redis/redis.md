@@ -135,21 +135,67 @@
 	(Hash)
 	KV模式不变，但V是一个键值对
 	
+	hset/hget/hmset/hmget/hgetall/hdel
 	
+	
+	（单个赋值）
+	hset user id 11
+	hset user name tom
+	
+	(多个赋值)
+	hmset
+	hmset employeeinfo id 01 name lala age 27
+	hmget employeeinfo id name age
+	hgetall employeeinfo：全部取出来 
+	hlen employeeinfo
+	hexists key :在key里面的某个值的key
+	hkeys/hvals:遍历key 
+	hincrby/hincrbyfloat：增长（整数，小数）
+	hsetnx：如果不存在，set
 	
 	
 	
 	(Zset)
+	在set基础上，加一个score值
+	set是 k1 v1 v2 v3
+	Zset 是k1 score1 v1 score2 v2
+	zadd zset01 60 v1 70 v2 80 v3 90 v4 100 v5
+	zrange zset01 0 -1：查询出来所有
+	zrange zset01 0 -1 withscores：带分数
+	zrangebyscore zset01 60 80：分数范围
+	zrangebyscore zset01 60 (80：大于等于60，小于80
+	zrangebyscore zset01 60 100 limit 2 2
+	zrem zset01 v5
+	zcard zset01  4
+
+
+
+6.解析配置文件redis.conf
+
+	####INCLUDES####
+	可以包含其他配置文件
+	
+	tcp-backlog:一个连接队列  ，backlog的队列总和 = 未完成三次握手队列+已经完成三次握手队列
+	高并发的情况下你需要一个高backlog的值来避免慢客户端的连接问题，注意linux内核会将这个值减小到/procsys/net/core/somaxconn的值
+	所以要增大somaxconn和tcp_max_syn_backlog两个值
 	
 	
+	timeout:超时时间
+	tcp-keepalive:单位为秒，如果设置为0，则不会进行keepalive的检测，建议设置成60
 	
-	
+	log-level:日志级别，debug<verbose<notice<warning
+	logfile:日志文件
+
+
 
 6.持久化和复制，RDB/AOF
 
 
 
 7.事务的控制
+
+
+
 
 
 
