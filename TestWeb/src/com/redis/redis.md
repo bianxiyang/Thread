@@ -182,13 +182,45 @@
 	
 	timeout:超时时间
 	tcp-keepalive:单位为秒，如果设置为0，则不会进行keepalive的检测，建议设置成60
-	
 	log-level:日志级别，debug<verbose<notice<warning
 	logfile:日志文件
-
+	syslog-enabled no：是否把日志输出到syslog中
+	
+	
+	SNAPSHOTTING快照
+	
+	
+	
+	security(安全)：config get requirepass 查询密码
+				config set requirepass "123456"  设置密码
+				auth 123456密码验证
+	
+	
+	limits限制：
+		maxclients:
+		maxmemory
+		maxmemory-policy:缓存过期清除策略（noeviction永不过期，一般不会这样配置）
+			1.volatile-lru:使用LRU算法移除key，只对设置了过期时间的键
+			2.allkeys-lru:使用LRU算法移除key
+			3.volatile-random：在过期集合中移除随机的key,只对设置了过期时间的键
+			4.allkeys-random：移除随机的key
+			5.volatile-ttl:移除那些ttl值最小的key,即那些最近要过期的key
+			6.noeviction不进行移除，针对写操作，只是返回错误信息
+		maxmemory-samples
+			设置样本数量，是一个估算值。
+	
+	
+	
+	
 
 
 6.持久化和复制，RDB/AOF
+
+
+	RDB:redis database
+
+	AOF:append only file
+
 
 
 
