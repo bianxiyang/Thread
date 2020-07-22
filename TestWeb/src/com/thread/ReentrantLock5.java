@@ -13,8 +13,8 @@ import java.util.concurrent.locks.ReentrantLock;
  *
  */
 public class ReentrantLock5 {
-//	private static ReentrantLock lock =new ReentrantLock(true);
-	private static ReentrantLock lock =new ReentrantLock(false);
+	private static ReentrantLock lock =new ReentrantLock(true);
+//	private static ReentrantLock lock =new ReentrantLock(false);
 	
 	public void run() {
 		for(int i=0;i<100;i++) {
