@@ -188,8 +188,15 @@
 	
 	
 	SNAPSHOTTING快照
-	
-	
+		save：自动化的保存rdb文件，立刻就保存
+		
+		bgsave:后台异步进行快照操作
+		
+		stop-writes-on-bgsave-error:后台保存出错了，停止写入，默认是yes
+			如果配置改成no,表示你不在乎数据一致性或者有其他手段发现和控制
+		rdbcompression：对于存储到磁盘中的快照，可以设置是否进行压缩存储
+		rdbchecksum:存储快照以后，还可以让redis使用CRC64算法进行数据校验，但是这样做会增加大约10%的性能消耗
+			如果希望获取到最大的性能提升，可以关闭此功能
 	
 	security(安全)：config get requirepass 查询密码
 				config set requirepass "123456"  设置密码
@@ -231,6 +238,9 @@
 		
 		Rdb保存的是dump.rdb文件
 		配置文件的位置：查询是否有启动，ps -ef|grep redis
+		
+		
+		rdb文件恢复策略，在清空并关机后立刻生成最新的空的rdb文件，如果想备份，再恢复，数据才不会受影响
 		
 	
 	AOF:append only file
