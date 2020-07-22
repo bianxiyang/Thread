@@ -245,7 +245,10 @@
 	
 	AOF:append only file
    
-
+		
+		
+		
+		
 
 
 7.事务的控制
