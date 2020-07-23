@@ -247,18 +247,35 @@
 		以日志的形式来记录每个写操作，将Redis执行过得所有写指令记录下来（读操作不记录）
 		
 		只追加文件但不可以改写文件，redis启动之初会读取该文件重新构建结构，redis重启就根据日志文件内容
-		将写指令从前到后执行一次以完成数据恢复
+		将写指令从前到后执行一次以完成数据恢复。
 		
-   
+		配置：
+			该功能默认是关闭的需要更改appendonly no --->yes
+			appendfsync:always:同步持久化，每次发生数据变更会立即记录到磁盘，性能较差但是数据完整性好
+						everysec:默认设置，异步操作，每秒记录
+						no
+		
+   		
+		RDB和AOF可以共存，先找aof，如果aof被损坏，可以使用redis-check-aof进行修复：redis-check-aof --fix appendonly.aof
 		
 		
+		Rewrite:appendonly.aof越来越大，新增了重写机制，当aof的文件大小达到了所设定的阈值，Redis会启动
+			AOF文件的压缩，只保留可以恢复数据的最小指令集，可以使用命令bgrewriteaof
+			
+			会fork出一条新的进程来重写，遍历新进程的内存中数据，每条记录有一条的set语句，重写没有读老的aof文件，而是将
+			整个内存中的数据内容重写了一个新的aof文件，类似于快照
+		触发机制:redis会记录上一次重写的aof的大小，默认配置是当aof文件大小是上次rewrite后大小的一倍且文件大于64M时触发
+				auto-aof-rewrite-min-size
 		
+		AOF的优势：每秒同步，每修改同步，不同步
+		AOF的劣势：aof文件很大，恢复速度慢
+				运行效率慢，每秒同步策略效率好，不同步效率和rdb相同
 		
 
 
 7.事务的控制
 
-
+	redis的事务
 
 
 
