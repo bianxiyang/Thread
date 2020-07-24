@@ -288,11 +288,16 @@
 	watch key[key......]:监控一个或者多个key,如果在事务执行之前这个key被其他命令所改动，那么事务将被打断
 	
 	
-		case1:正常执行
-		case2:放弃事务
-		case3:全体连坐
-		case4：冤头债主
-		case5:watch监控
+		case1:正常执行：multi开启事务，exec执行事务
+		case2:放弃事务：multi开启事务，discard取消事务
+		case3:全体连坐：multi开启事务，执行错一个，全体挂掉
+		case4：冤头债主：谁出了问题找谁
+			case3和case4的区别：连坐是在执行的时候，都无法通过，case4更像是运行时异常，命令没有错，执行过程中出现问题
+		
+		case5:watch监控：悲观锁/乐观锁/CAS
+	
+	
+	
 	
 
 8.Redis的发布订阅
