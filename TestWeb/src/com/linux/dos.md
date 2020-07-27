@@ -7,3 +7,4 @@
 	
 	
 	cp：复制
+	tar -zxvf 文件

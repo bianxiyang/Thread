@@ -342,11 +342,27 @@
 	
 	订阅多个，通配符*，psubscribe new*
 	
-	
+	收取消息
 	
 	
 9.Redis的主从复制（Master/Stave）
-
+	
+	主从复制
+	
+	1.配从（库）不配主（库）
+	2.从库配置:slaveof 主库 ip 主库端口
+		每次和master断开之后，都需要重新连接，除非你配置进redis.conf文件
+		Info replication
+	3.修改配置文件细节操作
+		拷贝多个redis.conf文件
+		开启daemonize yes
+		pid文件名字
+		指定端口
+		log文件名字
+		Dump.rdb名字
+	4.	A一主二仆
+		B薪火相传
+		C反客为主
 
 
 
