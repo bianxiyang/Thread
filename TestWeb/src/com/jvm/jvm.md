@@ -33,11 +33,45 @@
 	
 	主要是把内存区域分成两代
 	
-	new -young(新生代)
+	new -young(新生代):装的是刚刚new出来的对象
 	
 	old(老年代)
 	
 	永久代（1.7）/元数据区（1.8）metaspace:都是装class对象
-		永久代可以指定大小限制
+		永久代必须指定大小限制，元数据区可以无上限
+		
+5.10种垃圾回收器
+	
+	
+	parNew
+	
+	
+	Serial
+	
+	ParallelScavenge
+	
+	CMS
+	
+	SerialOld
+	
+	ParallelOld
+	
+	G1
+	
+	ZGC
+	
+	
+	Shenandoah
+	
+	
+	Epsilon
+	
+		
+		
+		
+		
+		
+		
+
 		
 	
