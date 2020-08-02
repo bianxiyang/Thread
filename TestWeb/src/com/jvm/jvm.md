@@ -33,9 +33,20 @@
 	
 	主要是把内存区域分成两代
 	
-	new -young(新生代):装的是刚刚new出来的对象
+	new -young(新生代):装的是刚刚new出来的对象,把刚new出来的对象，有用的对象放到survivor，然后清空eden(Copying算法)
 	
-	old(老年代)
+		eden
+		survivor
+		survivor 
+	
+	
+	
+	
+	
+	
+	old(老年代)：如果经历过eden，和两个survivor都没有被回收，放到老年代，使用的垃圾回收算法一般是标记清除，或者是标记压缩
+	
+	
 	
 	永久代（1.7）/元数据区（1.8）metaspace:都是装class对象
 		永久代必须指定大小限制，元数据区可以无上限
@@ -43,33 +54,40 @@
 5.10种垃圾回收器
 	
 	
-	parNew
+	parNew（new）			Serial（new）			ParallelScavenge（new）
 	
 	
-	Serial
-	
-	ParallelScavenge
-	
-	CMS
-	
-	SerialOld
-	
-	ParallelOld
-	
-	G1
-	
-	ZGC
+	CMS(old)				SerialOld(old)		ParallelOld(old)
 	
 	
-	Shenandoah
+	G1		ZGC			Shenandoah
 	
 	
 	Epsilon
 	
 		
+	1.最早的serial（单线程，承受几十兆）
+	
+	单线程执行，垃圾满了之后，停止一切线程，清理完继续使用，serialOld就是在老年代执行单线程操作		
+	
+	2.ParallelScavenge（多线程，承受几个G）
+	
+	
+	3.Parnew和CMS
+	
+		CMS:concurrent mark sweep---并发的标记清除算法
+		全称：a mostly concurrent,low-pause collector
+		四个阶段
+		A initial mark(初始标记)
+		B concurrent mark（并发标记）
+		C remark（重新标记）
+		D concurrent sweep（并发清理）
 		
 		
+		初始标记出来垃圾，
+		并发标记的同时，会出现一种情况，原来被标记成垃圾的对象，重新被使用，会出现新的使用对象呗清除掉，所以才会有重新标记
 		
+	
 		
 		
 
