@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.tcsl.fast.kds.server.dao.KdsItemMethodMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.tcsl.fast.kds.server.model.KdsItemMethod" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="kds_item_id" property="kdsItemId" jdbcType="BIGINT" />
+    <result column="shop_id" property="shopId" jdbcType="INTEGER" />
+    <result column="create_shop_id" property="createShopId" jdbcType="INTEGER"/>
+    <result column="item_id" property="itemId" jdbcType="BIGINT" />
+    <result column="method_type" property="methodType" jdbcType="SMALLINT" />
+    <result column="method_id" property="methodId" jdbcType="BIGINT" />
+    <result column="method_name" property="methodName" jdbcType="VARCHAR" />
+    <result column="method_qty" property="methodQty" jdbcType="NUMERIC" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, kds_item_id, shop_id, item_id, method_type, method_name,method_qty,create_time,modify_time,method_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from kds_item_method
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from kds_item_method
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.com.tcsl.fast.kds.server.model.KdsItemMethod" >
+    insert into kds_item_method (id, kds_item_id, shop_id, 
+      item_id, method_type, method_name,method_qty,create_time,modify_time,method_id,create_shop_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{kdsItemId,jdbcType=BIGINT}, #{shopId,jdbcType=INTEGER}, 
+      #{itemId,jdbcType=BIGINT}, #{methodType,jdbcType=SMALLINT}, #{methodName,jdbcType=VARCHAR}, #{methodQty,jdbcType =NUMERIC},#{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP},#{methodId,jdbcType=BIGINT},#{createShopId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.tcsl.fast.kds.server.model.KdsItemMethod" >
+    insert into kds_item_method
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="kdsItemId != null" >
+        kds_item_id,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="itemId != null" >
+        item_id,
+      </if>
+      <if test="methodType != null" >
+        method_type,
+      </if>
+      <if test="methodName != null" >
+        method_name,
+      </if>
+      <if test="methodQty != null" >
+        method_qty,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+
+      <if test="methodId != null" >
+        method_id,
+      </if>
+
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="kdsItemId != null" >
+        #{kdsItemId,jdbcType=BIGINT},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null" >
+        #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="methodType != null" >
+        #{methodType,jdbcType=SMALLINT},
+      </if>
+      <if test="methodName != null" >
+        #{methodName,jdbcType=VARCHAR},
+      </if>
+      <if test="methodQty != null" >
+        #{methodQty,jdbcType=NUMERIC},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="methodId != null" >
+        #{methodId,jdbcType=BIGINT},
+      </if>
+
+
+
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.tcsl.fast.kds.server.model.KdsItemMethod" >
+    update kds_item_method
+    <set >
+      <if test="kdsItemId != null" >
+        kds_item_id = #{kdsItemId,jdbcType=BIGINT},
+      </if>
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="itemId != null" >
+        item_id = #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="methodType != null" >
+        method_type = #{methodType,jdbcType=SMALLINT},
+      </if>
+      <if test="methodName != null" >
+        method_name = #{methodName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.tcsl.fast.kds.server.model.KdsItemMethod" >
+    update kds_item_method
+    set kds_item_id = #{kdsItemId,jdbcType=BIGINT},
+      shop_id = #{shopId,jdbcType=INTEGER},
+      item_id = #{itemId,jdbcType=BIGINT},
+      method_type = #{methodType,jdbcType=SMALLINT},
+      method_name = #{methodName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="queryKdsItemMethod" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select
+    <include refid="Base_Column_List"/>
+    from kds_item_method
+    where shop_id = #{shopId}
+    <if test="kdsItemId != null">
+      and kds_item_id = #{kdsItemId}
+    </if>
+    <if test="kdsItemIds != null and kdsItemIds.size() > 0">
+      and kds_item_id in(
+
+      <foreach collection="kdsItemIds" index="index" item="itemId" separator="," >
+        #{itemId}
+      </foreach>
+      )
+    </if>
+    <if test="itemId != null">
+      and item_id = #{itemId}
+    </if>
+    order by create_time
+  </select>
+
+</mapper>
